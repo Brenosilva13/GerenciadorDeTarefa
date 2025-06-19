@@ -12,12 +12,10 @@ async function adicionarTarefa() {
 
   const tarefa = { titulo, descricao, concluida: false };
 
-  // Salva no localStorage
   let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
   tarefas.push(tarefa);
   localStorage.setItem('tarefas', JSON.stringify(tarefas));
 
-  // Envia para o MongoDB
   await fetch(API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
